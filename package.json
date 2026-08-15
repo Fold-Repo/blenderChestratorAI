@@ -1,0 +1,21 @@
+{
+  "name": "blender-ai-copilot",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build -w @blender-ai/contracts && npm run build -w @blender-ai/backend",
+    "lint": "npm run lint -w @blender-ai/contracts && npm run lint -w @blender-ai/backend",
+    "typecheck": "npm run typecheck -w @blender-ai/contracts && npm run typecheck -w @blender-ai/backend",
+    "test": "npm run test -w @blender-ai/contracts && npm run test -w @blender-ai/backend && python3 -m unittest discover -s apps/blender_addon/tests -p 'test_*.py'"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

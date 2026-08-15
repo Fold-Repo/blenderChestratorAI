@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Install Blender AI Copilot</title>
+    <style>
+      :root {
+        --bg: #101216;
+        --panel: #171b22;
+        --panel-2: #1e242e;
+        --line: #2a3140;
+        --text: #e8edf4;
+        --muted: #9aa6b8;
+        --accent: #f5a623;
+        --ok: #3dd68c;
+        --code: #0d1117;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.5;
+      }
+
+      .wrap {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 40px 24px 72px;
+      }
+
+      .kicker {
+        color: var(--accent);
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: 34px;
+        line-height: 1.15;
+      }
+
+      .lede {
+        color: var(--muted);
+        font-size: 18px;
+        margin: 0 0 28px;
+        max-width: 62ch;
+      }
+
+      .banner {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-left: 4px solid var(--accent);
+        padding: 16px 18px;
+        margin-bottom: 28px;
+      }
+
+      .step {
+        display: grid;
+        grid-template-columns: 48px 1fr;
+        gap: 16px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        padding: 18px;
+        margin-bottom: 12px;
+      }
+
+      .num {
+        width: 48px;
+        height: 48px;
+        display: grid;
+        place-items: center;
+        background: var(--panel-2);
+        border: 1px solid var(--line);
+        color: var(--accent);
+        font-weight: 700;
+        font-size: 18px;
+      }
+
+      h2 {
+        margin: 0 0 6px;
+        font-size: 18px;
+      }
+
+      p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .code {
+        margin-top: 12px;
+        background: var(--code);
+        border: 1px solid var(--line);
+        padding: 12px 14px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 13px;
+        color: #d7e0ea;
+        white-space: pre-wrap;
+        word-break: break-word;
+        position: relative;
+      }
+
+      .copy {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: var(--panel-2);
+        color: var(--text);
+        border: 1px solid var(--line);
+        padding: 4px 8px;
+        font-size: 12px;
+        cursor: pointer;
+      }
+
+      .copy:hover,
+      .copy.copied {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      ul {
+        margin: 10px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+      }
+
+      .path {
+        color: var(--text);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 13px;
+      }
+
+      h3 {
+        margin: 40px 0 12px;
+        font-size: 22px;
+      }
+
+      .checks {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        padding: 8px 16px 16px;
+      }
+
+      label {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--line);
+        color: var(--muted);
+        cursor: pointer;
+      }
+
+      label:last-child {
+        border-bottom: 0;
+      }
+
+      input[type="checkbox"] {
+        margin-top: 4px;
+        accent-color: var(--ok);
+      }
+
+      footer {
+        margin-top: 36px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <div class="kicker">Blender AI Copilot</div>
+      <h1>How to install and test</h1>
+      <p class="lede">
+        Great, you can load and test it now. Follow these exact steps.
+      </p>
+
+      <div class="banner">
+        Blender 4.2+ is recommended. Keep the repository up to date before
+        packaging the add-on. The backend default URL is
+        <span class="path">http://localhost:3009</span>.
+      </div>
+
+      <article class="step">
+        <div class="num">1</div>
+        <div>
+          <h2>Confirm Blender and the repo</h2>
+          <p>
+            Make sure Blender is installed (4.2+ recommended) and your repo is
+            up to date.
+          </p>
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="num">2</div>
+        <div>
+          <h2>Create an installable zip</h2>
+          <p>From your project root, run:</p>
+          <pre class="code" id="zip-cmd"><button class="copy" type="button" data-copy="zip-cmd">Copy</button>cd /Users/ogunwolesamuel/development/projects/BlenderPluginAI/apps/blender_addon
+zip -r blender_ai_copilot.zip blender_ai_copilot</pre>
+          <p style="margin-top: 10px">
+            Alternative from the repo root:
+            <span class="path">python3 scripts/package_addon.py</span>
+          </p>
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="num">3</div>
+        <div>
+          <h2>Open Blender</h2>
+          <p>Launch Blender 4.2 or newer.</p>
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="num">4</div>
+        <div>
+          <h2>Open Add-ons preferences</h2>
+          <p>Go to <strong>Edit → Preferences → Add-ons</strong>.</p>
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="num">5</div>
+        <div>
+          <h2>Install from Disk</h2>
+          <p>
+            Click the dropdown at top-right (or <strong>Install...</strong>) and
+            choose <strong>Install from Disk</strong>.
+          </p>
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="num">6</div>
+        <div>
+          <h2>Select the zip</h2>
+          <p>Select:</p>
+          <pre class="code" id="zip-path"><button class="copy" type="button" data-copy="zip-path">Copy</button>/Users/ogunwolesamuel/development/projects/BlenderPluginAI/apps/blender_addon/blender_ai_copilot.zip</pre>
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="num">7</div>
+        <div>
+          <h2>Enable the add-on</h2>
+          <p>
+            Enable the add-on checkbox for <strong>Blender AI Copilot</strong>.
+          </p>
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="num">8</div>
+        <div>
+          <h2>Open the plugin UI</h2>
+          <ul>
+            <li>3D Viewport → press <strong>N</strong> → <strong>Copilot</strong> tab</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="num">9</div>
+        <div>
+          <h2>Configure add-on settings</h2>
+          <ul>
+            <li>In the Copilot panel, click the settings icon</li>
+            <li>
+              Set <strong>Backend Base URL</strong> to
+              <span class="path">http://localhost:3009</span>
+            </li>
+            <li>Keep timeout/retry defaults unless needed</li>
+            <li>
+              Enter a username and password, then click
+              <strong>Authenticate / Log In</strong>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="num">10</div>
+        <div>
+          <h2>Start the backend</h2>
+          <p>Start backend in another terminal:</p>
+          <pre class="code" id="backend-cmd"><button class="copy" type="button" data-copy="backend-cmd">Copy</button>cd /Users/ogunwolesamuel/development/projects/BlenderPluginAI
+. ~/.nvm/nvm.sh
+nvm use 22
+npm run dev -w @blender-ai/backend</pre>
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="num">11</div>
+        <div>
+          <h2>Test in Blender</h2>
+          <p>Back in Blender:</p>
+          <ul>
+            <li>Click <strong>Refresh Connection</strong></li>
+            <li>Click <strong>Refresh Scene Context</strong></li>
+            <li>Send a test message (for example: <strong>Hello</strong>)</li>
+          </ul>
+        </div>
+      </article>
+
+      <h3>MVP-4 manual test checklist</h3>
+      <div class="checks">
+        <label>
+          <input type="checkbox" />
+          <span>Empty scene: refresh context, confirm object count is 0</span>
+        </label>
+        <label>
+          <input type="checkbox" />
+          <span>Add a cube, camera, and light; refresh context and confirm counts</span>
+        </label>
+        <label>
+          <input type="checkbox" />
+          <span>Put objects in more than one collection; confirm collections appear</span>
+        </label>
+        <label>
+          <input type="checkbox" />
+          <span>Select objects in the viewport; confirm selected IDs/names update</span>
+        </label>
+        <label>
+          <input type="checkbox" />
+          <span>Send a chat message and receive a backend response</span>
+        </label>
+        <label>
+          <input type="checkbox" />
+          <span>Connection badge returns to Ready after Refresh Connection</span>
+        </label>
+      </div>
+
+      <footer>
+        Open this file in a browser anytime:
+        <span class="path">docs/how-to-install.html</span>
+      </footer>
+    </main>
+    <script>
+      document.querySelectorAll(".copy").forEach((button) => {
+        button.addEventListener("click", async () => {
+          const id = button.getAttribute("data-copy");
+          const block = document.getElementById(id);
+          const text = block ? block.innerText.replace(/^Copy\n?/, "").trim() : "";
+          await navigator.clipboard.writeText(text);
+          button.textContent = "Copied";
+          button.classList.add("copied");
+          setTimeout(() => {
+            button.textContent = "Copy";
+            button.classList.remove("copied");
+          }, 1200);
+        });
+      });
+    </script>
+  </body>
+</html>
